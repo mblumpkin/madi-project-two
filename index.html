@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Responsive Layouts</title>
-  <meta name="description" content="This site will serve as the hub for many sub responsive layouts">
+  <title>The Light Between - Join the Community</title>
+  <meta name="description" content="This site will serve as a hub for joining the community for a game I'm developing.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:title" content="">
@@ -13,18 +13,75 @@
   <meta property="og:image" content="">
 
   <link rel="manifest" href="site.webmanifest">
-  <link rel="icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
+  <link rel="icon" href="./img/faviconBean.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <meta name="theme-color" content="#fafafa">
 </head>
 
 <body>
-  <!-- Place your site's HTML here -->
-  <p>This text will display on your site! Jan 19</p>
+
+  <div id="mouse-glow"></div>
+  <canvas id="fireflies" aria-hidden="true"></canvas>
+
+  <audio id="bg-music" loop preload="auto">
+  <source src="audio/SW_MythicalBackgroundAtmosphere.WAV" type="audio/wav">
+</audio>
+
+ <div class="sound-wrap">
+  <button id="sound-toggle" class="sound-toggle" type="button" aria-pressed="false">
+    <img src="img/shadowBean.png" alt="" class="shadowBean" aria-hidden="true">
+    <span class="sound-label">Sound: Off</span>
+  </button>
+</div>
+
+  
+  <header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#">
+      <img src="img/faviconBean.png" alt="" class="brand-icon">
+      <span class="brand-text">The Light Between</span>
+    </a>
+
+    <nav class="nav">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#community">Community</a>
+      <a class="nav-link nav-cta" href="#join">Join</a>
+    </nav>
+  </div>
+  </header>
+
+  <main>
+  <section class="hero" id="about">
+    <div class="hero-inner">
+      <p class="hero-kicker">THE LIGHT BETWEEN</p>
+
+      <h1 class="hero-title">
+        There’s no light without a shadow that follows…
+      </h1>
+
+      <p class="hero-about">
+        beepboop this is where i'll talk about the game beep
+      </p>
+
+      <div class="hero-actions">
+        <a class="hero-getUpdates" href="#join">Get updates</a>
+        <a class="hero-learnMore" href="#about">Learn more</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Placeholder join section so the button has somewhere to go -->
+  <section id="join" class="join-anchor">
+    <!-- your form goes here -->
+  </section>
+  </main>
+  
   <script src="js/main.js"></script>
 </body>
 
