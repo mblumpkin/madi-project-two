@@ -52,50 +52,60 @@
       <a class="nav-link" href="#about">About</a>
       <a class="nav-link" href="#dev">Developer</a>
       <a class="nav-link" href="#community">Community</a>
-      <a class="nav-link nav-cta" href="#join">Join</a>
+      <a class="nav-link" href="#currently">Currently</a>
     </nav>
   </div>
   </header>
 
   <main>
   <section class="hero" id="about">
-    <div class="hero-inner">
-      <p class="hero-kicker">THE LIGHT BETWEEN</p>
+  <div class="hero-inner">
 
-      <h1 class="hero-title">
-        There’s no light without a shadow that follows…
-      </h1>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="hero-kicker">THE LIGHT BETWEEN</p>
 
-      <p class="hero-about">
-        beepboop this is where i'll talk about the game beep
-      </p>
+        <h1 class="hero-title">
+          Where there’s a light, there’s a shadow that follows…
+        </h1>
 
-      <div class="hero-actions">
-        <a class="hero-getUpdates" href="#join">Get updates</a>
-        <a class="hero-learnMore" href="#about">Learn more</a>
+        <p class="hero-about">
+          beepboop this is where i'll talk about the game beep
+        </p>
+
+        <div class="hero-actions">
+          <a class="hero-getUpdates" href="#join">Get updates</a>
+          <a class="hero-learnMore" href="#about">Learn more</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img class="hero-image" src="./img/LightBeanConceptArt.png" alt="">
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
 
   <section class="about-game" id="about">
   <div class="about-inner">
     <p class="section-kicker">ABOUT THE GAME</p>
-    <h2 class="section-title">A platformer where your shadow becomes your tool.</h2>
+    <h2 class="section-title">A game where there's more to the world than just what you can see.</h2>
     <p class="section-sub">
-      Light Between is in development — here are the three things to know first.
+      Light Between is in development...write my three things intro
     </p>
 
     <div class="about-grid">
       <article class="about-card">
-        <p class="card-tag">GENRE</p>
-        <h3 class="card-title">enter my genreeee</h3>
+        <p class="card-tag">EXPLORE</p>
+        <h3 class="card-title">Puzzle Platformer</h3>
         <p class="card-text">
           more about the genre haha
         </p>
       </article>
 
       <article class="about-card">
-        <p class="card-tag">STORY</p>
+        <p class="card-tag">COLLECT ABILITIES</p>
         <h3 class="card-title">whats the guys doing</h3>
         <p class="card-text">
          yep yep more story 
@@ -103,8 +113,8 @@
       </article>
 
       <article class="about-card">
-        <p class="card-tag">CORE MECHANIC</p>
-        <h3 class="card-title">THE SHADOOOWOWOWOWOWOOWOW</h3>
+        <p class="card-tag">USE YOUR SHADOW</p>
+        <h3 class="card-title">Using your shadow</h3>
         <p class="card-text">
           About using the shadow 
         </p>
@@ -113,29 +123,142 @@
   </div>
 </section>
 
-<section class="the-developer" id="developer">
-  <div class="developer-inner">
+<section class="about-dev" id="dev">
+  <div class="about-dev-inner">
+
     <p class="section-kicker">ABOUT THE DEVELOPER</p>
-    <h2 class="section-title">that's me.</h2>
+
+    <div class="dev-card">
+      <h2 class="section-title">A little bit about Madi Bee...</h2>
+
+      <p class="section-sub">
+       meeeeeee and why I'm making this game woohoo
+      </p>
+
+      <p class="dev-extra">
+        my inspiration eheheheheheh
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="community" id="community">
+  <div class="community-inner">
+
+    <p class="section-kicker">COMMUNITY</p>
+    <h2 class="section-title">Be part of The Light Between.</h2>
     <p class="section-sub">
-      this is about meeeeeeeeee
+      Join early and help shape the world — here’s what you’ll get.
     </p>
 
-    <div class="developer-grid">
-      <article class="developer-card">
-        <p class="card-tag">GENRE</p>
-        <h3 class="card-title">enter my genreeee</h3>
-        <p class="card-text">
-         me
+    <div class="community-grid">
+
+      <article class="community-card">
+        <p class="card-tag">PERKS</p>
+        <h3 class="card-title">Community Perks</h3>
+
+        <ul class="perk-list">
+          <li>perk one</li>
+          <li>perk two</li>
+          <li>perk three</li>
+          <li>perk four</li>
+        </ul>
+      </article>
+
+     <article class="community-card">
+  <p class="card-tag">JOIN</p>
+  <h3 class="card-title">Join the Community</h3>
+  <p class="card-text">
+    Get updates + help shape the game as it grows.
+  </p>
+
+  <form class="join-form" id="join-form" novalidate>
+    <label class="field">
+      <span class="field-label">Name</span>
+      <input
+        class="field-input"
+        type="text"
+        name="name"
+        placeholder="Your name"
+        required
+      />
+    </label>
+
+    <label class="field">
+      <span class="field-label">Email</span>
+      <input
+        class="field-input"
+        type="email"
+        name="email"
+        placeholder="you@example.com"
+        required
+      />
+    </label>
+
+    <label class="field">
+      <span class="field-label">What are you excited about?</span>
+      <textarea
+        class="field-input field-textarea"
+        name="excited"
+        placeholder="The shadow mechanic, atmosphere, platforming…"
+        required
+      ></textarea>
+    </label>
+
+    <p class="form-hint" id="join-hint">All fields are required.</p>
+
+    <button class="join-submit" type="submit" disabled>
+      Join the Community
+    </button>
+  </form>
+</article>
+    </div>
+  </div>
+</section>
+
+<section class="currently" id="currently">
+  <div class="currently-inner">
+    <p class="section-kicker">CURRENTLY</p>
+    <h2 class="section-title">What I’m working on right now</h2>
+    <p class="section-sub">Quick peeks + dev notes as the game evolves.</p>
+
+    <div class="currently-grid">
+      <article class="currently-card">
+        <p class="card-tag">PROTOTYPE</p>
+        <h3 class="card-title">Playtest clip (prototype run)</h3>
+
+        <div class="media-frame">
+          <video class="media" controls playsinline preload="metadata">
+            <source src="video" type="video/mp4">
+          </video>
+        </div>
+
+        <p class="dev-notes">
+          Dev notes: these are my notes enfaerjfheuasir fher
+        </p>
+      </article>
+
+      <article class="currently-card">
+        <p class="card-tag">IN PROGRESS MODEL</p>
+        <h3 class="card-title">New environment prop</h3>
+
+        <div class="media-frame">
+          
+          <img class="media" src="change this">
+
+        </div>
+
+        <p class="dev-notes">
+          Dev notes: modelllijnnnngnngjndsjhgabsedg
         </p>
       </article>
     </div>
   </div>
 </section>
 
-  <section id="join" class="join-anchor">
 
-  </section>
   </main>
   
   <script src="js/main.js"></script>

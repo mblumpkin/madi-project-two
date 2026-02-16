@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const y = (e.clientY / window.innerHeight) * 100;
 
       glow.style.background = `radial-gradient(
-        300px circle at ${x}% ${y}%,
+        200px circle at ${x}% ${y}%,
         #ffd24d22,
         #b45aff11 40%,
-        transparent 65%
+        transparent 70%
       )`;
     });
   }
@@ -120,7 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const rr = f.r * (0.95 + tw * 0.15);
         const hue = 46 + f.hueShift;
 
-        // Big soft glow — no harsh “dot”
         const g = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, rr * 12);
         g.addColorStop(0, `hsla(${hue}, 95%, 65%, ${alpha})`);
         g.addColorStop(0.4, `hsla(${hue}, 95%, 60%, ${alpha * 0.40})`);
@@ -177,4 +176,58 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+const joinForm = document.getElementById("join-form");
+const joinHint = document.getElementById("join-hint");
+const joinBtn = joinForm?.querySelector(".join-submit");
+
+if (joinForm && joinBtn) {
+  const nameInput = joinForm.elements["name"];
+  const emailInput = joinForm.elements["email"];
+  const excitedInput = joinForm.elements["excited"];
+
+  const validEmail = (value) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+  };
+
+  const check = () => {
+    const nameOk = nameInput.value.trim().length > 0;
+    const emailOk = validEmail(emailInput.value);
+    const excitedOk = excitedInput.value.trim().length > 0;
+
+    const allOk = nameOk && emailOk && excitedOk;
+    joinBtn.disabled = !allOk;
+
+    if (!emailOk && emailInput.value.trim().length > 0) {
+      joinHint.textContent = "Please enter a valid email address.";
+      joinHint.classList.add("error");
+    } else {
+      joinHint.textContent = "All fields are required.";
+      joinHint.classList.remove("error");
+    }
+  };
+
+  ["input", "blur"].forEach((evt) => {
+    nameInput.addEventListener(evt, check);
+    emailInput.addEventListener(evt, check);
+    excitedInput.addEventListener(evt, check);
+  });
+
+  check();
+
+  joinForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    check();
+    if (joinBtn.disabled) return;
+
+    joinHint.textContent = "You’re in! Welcome to the community ✨";
+    joinHint.classList.remove("error");
+
+    joinForm.reset();
+    check();
+  });
+}
+
+
 });
