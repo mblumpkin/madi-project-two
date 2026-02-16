@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // -------------------------------------------------------
-  // A) Mouse glow (updates the radial gradient position)
-  // -------------------------------------------------------
+
+/**mouse glow effect */
+
   const glow = document.getElementById("mouse-glow");
   if (glow) {
     document.addEventListener("mousemove", (e) => {
@@ -17,9 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // -------------------------------------------------------
-  // B) Foggy Fireflies (calm, misty, not chaotic)
-  // -------------------------------------------------------
+  /**the fireflies that made me rip my hair out*/
+
   const canvas = document.getElementById("fireflies");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -44,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
       canvas.style.height = h + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      // Lower number = calmer. Adjust 26–40 if you want.
       const target = Math.floor(28 * (w * h) / (1100 * 700));
 
       while (flies.length < target) {
@@ -77,13 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function draw(t) {
       requestAnimationFrame(draw);
 
-      // Clear each frame (keeps it clean and prevents “scribbles”)
       ctx.clearRect(0, 0, w, h);
 
-      // Soft fog layer to push fireflies “behind mist”
       ctx.globalCompositeOperation = "source-over";
       const fog = ctx.createRadialGradient(
-        w * 0.5, h * 0.35, 80,
+        w * 0.5, h * 0.35, 60,
         w * 0.5, h * 0.35, Math.max(w, h)
       );
       fog.addColorStop(0, "rgba(180, 90, 255, 0.05)"); // #b45aff
@@ -92,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.fillStyle = fog;
       ctx.fillRect(0, 0, w, h);
 
-      // Fireflies in additive blend
       ctx.globalCompositeOperation = "lighter";
 
       const px = pointer.x * w;
@@ -105,13 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
         f.x += wob1 * f.drift * 120;
         f.y += wob2 * f.drift * 100;
 
-        // Wrap edges
         if (f.x < -20) f.x = w + 20;
         if (f.x > w + 20) f.x = -20;
         if (f.y < -20) f.y = h + 20;
         if (f.y > h + 20) f.y = -20;
 
-        // Very subtle attraction to cursor (calm)
         if (pointer.active) {
           const dx = px - f.x;
           const dy = py - f.y;
@@ -121,7 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
           f.y += (dy / dist) * pull;
         }
 
-        // Gentle flicker
         const tw = 0.5 + 0.5 * Math.sin(t * 0.0022 + f.phase);
         const alpha = clamp(f.a * (0.35 + tw * 0.55), 0, 0.28);
 
@@ -144,16 +136,12 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(draw);
   }
 
-  // -------------------------------------------------------
-  // C) Sound toggle + shadow bounce (SAFE: doesn't delete img)
-  // -------------------------------------------------------
   const audio = document.getElementById("bg-music");
   const btn = document.getElementById("sound-toggle");
   const label = btn ? btn.querySelector(".sound-label") : null;
 
   if (audio) audio.volume = 0.35;
 
-  // Restore saved setting (UI only; browsers block autoplay)
   const saved = localStorage.getItem("lightbetween_sound");
   if (btn && label) {
     const isSavedOn = saved === "on";
@@ -163,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (audio && btn && label) {
     btn.addEventListener("click", async () => {
-      // Bounce on click (doesn't matter if audio fails)
+   
       btn.classList.remove("bounce");
       void btn.offsetWidth;
       btn.classList.add("bounce");
@@ -171,20 +159,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const turningOn = audio.paused;
 
-      // Update UI without destroying inner HTML
       btn.setAttribute("aria-pressed", turningOn ? "true" : "false");
       label.textContent = turningOn ? "Sound: On" : "Sound: Off";
 
       try {
         if (turningOn) {
-          await audio.play(); // allowed due to user click
+          await audio.play();
           localStorage.setItem("lightbetween_sound", "on");
         } else {
           audio.pause();
           localStorage.setItem("lightbetween_sound", "off");
         }
       } catch (err) {
-        // Revert UI if play fails
         console.log("Audio play failed:", err);
         btn.setAttribute("aria-pressed", turningOn ? "false" : "true");
         label.textContent = turningOn ? "Sound: Off" : "Sound: On";

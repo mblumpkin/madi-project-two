@@ -1,6 +1,6 @@
 /* Place CSS styles here */
 
-/* ---------- Base ---------- */
+/* base*/
 *{ box-sizing: border-box; }
 
 body{
@@ -10,7 +10,8 @@ body{
   color: #ffffff;
 }
 
-/* ---------- Background FX Layers ---------- */
+/*mouse glow effect*/
+
 #mouse-glow{
   position: fixed;
   inset: 0;
@@ -27,6 +28,8 @@ body{
   z-index: 1;
 }
 
+/*fireflies effect in the background*/
+
 #fireflies{
   position: fixed;
   inset: 0;
@@ -36,13 +39,13 @@ body{
   filter: blur(0.2px);
 }
 
-/* Make sure main content is above FX */
+/*header*/
+
 main, header, section{
   position: relative;
   z-index: 3;
 }
 
-/* ---------- Header ---------- */
 .site-header{
   position: sticky;
   top: 0;
@@ -67,7 +70,7 @@ main, header, section{
 .brand{
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 
   color: #ffffff;
   text-decoration: none;
@@ -82,7 +85,6 @@ main, header, section{
   display: block;
 }
 
-/* ---------- Nav Buttons (glow OUTSIDE only) ---------- */
 .nav{
   display: flex;
   align-items: center;
@@ -123,7 +125,8 @@ main, header, section{
   border-color: rgba(255,210,77,0.22);
 }
 
-/* ---------- Hero ---------- */
+/*hero and hero buttons*/ 
+
 .hero{
   padding: 70px 18px 40px;
 }
@@ -135,7 +138,7 @@ main, header, section{
 
 .hero-kicker{
   margin: 0 0 10px;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 2.5px;
   color: #cfc9ff;
   opacity: 0.85;
@@ -143,7 +146,7 @@ main, header, section{
 
 .hero-title{
   margin: 0;
-  font-size: clamp(38px, 5.6vw, 64px);
+  font-size: clamp(36px, 5.6vw, 64px);
   line-height: 1.05;
   color: #ffffff;
   letter-spacing: -0.6px;
@@ -165,7 +168,6 @@ main, header, section{
   flex-wrap: wrap;
 }
 
-/* ---------- Hero Buttons ---------- */
 .hero-getUpdates{
   display: inline-flex;
   align-items: center;
@@ -225,14 +227,13 @@ main, header, section{
     0 0 28px rgba(180,90,255,0.14);
 }
 
-/* ---------- Join Anchor ---------- */
 .join-anchor{
   scroll-margin-top: 90px;
   padding: 40px 18px;
 }
 
-/* ---------- Sound Button + Shadow Character ---------- */
-/* Wrapper is fixed; button is relative (so PNG anchors perfectly) */
+/*sound toggling button and shadow bean that stands on top of it*/
+
 .sound-wrap{
   position: fixed;
   right: 18px;
@@ -240,7 +241,6 @@ main, header, section{
   z-index: 60;
 }
 
-/* IMPORTANT: you MUST have <div class="sound-wrap"> around the button */
 .sound-toggle{
   position: relative;
 
@@ -275,12 +275,11 @@ main, header, section{
     0 0 28px rgba(180,90,255,0.14);
 }
 
-/* Shadow PNG sits on TOP of the button */
 .shadowBean{
   position: absolute;
   left: 50%;
   bottom: 100%;
-  transform: translateX(-50%) translateY(6px); /* a tiny overlap so feet touch button */
+  transform: translateX(-50%) translateY(6px); 
 
   width: 52px;
   height: auto;
@@ -288,12 +287,9 @@ main, header, section{
   pointer-events: none;
   transform-origin: bottom center;
 
-  /* just in case PNG is dark, keep it visible */
   filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
 }
 
-
-/* Bounce DOWN to "press" */
 @keyframes shadowPress{
   0%   { transform: translateX(-50%) translateY(6px) scaleY(1); }
   40%  { transform: translateX(-50%) translateY(16px) scaleY(0.9); }
@@ -305,9 +301,112 @@ main, header, section{
   animation: shadowPress 0.45s ease;
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 520px){
   .hero{ padding-top: 52px; }
   .hero-about{ font-size: 16px; }
   .nav{ gap: 10px; }
+}
+
+/*about section*/
+
+.about-game{
+  padding: 70px 18px;
+}
+
+.about-inner{
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-kicker{
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  color: #cfc9ff;
+  opacity: 0.85;
+}
+
+.section-title{
+  margin: 0;
+  font-size: clamp(26px, 3.2vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+}
+
+.section-sub{
+  margin: 14px 0 0;
+  max-width: 70ch;
+  color: rgba(233,226,255,0.78);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* about cards */
+.about-grid{
+  margin-top: 26px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 800px){
+  .about-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.about-card{
+  position: relative;
+  padding: 18px 18px 20px;
+  border-radius: 22px;
+
+  background: rgba(255,255,255,0.06);
+  border: 2px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+@keyframes cardFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.about-card:nth-child(1){ animation: cardFloat 6s ease-in-out infinite; }
+.about-card:nth-child(2){ animation: cardFloat 7s ease-in-out infinite; }
+.about-card:nth-child(3){ animation: cardFloat 6.5s ease-in-out infinite; }
+
+
+.card-tag{
+  margin: 0 0 10px;
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 700;
+
+  color: #16051f;
+  background: rgba(255,210,77,0.92);
+}
+
+.card-title{
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: -0.2px;
+}
+
+.card-text{
+  margin: 10px 0 0;
+  color: rgba(233,226,255,0.78);
+  line-height: 1.7;
+  font-size: 14.5px;
+}
+
+/* accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .about-card{ animation: none !important; }
+  .about-card:hover{ transform: none; }
 }
