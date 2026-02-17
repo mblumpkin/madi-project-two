@@ -746,6 +746,9 @@ main, header, section{
   box-shadow:
     0 0 0 1px rgba(255,210,77,0.08),
     0 0 24px rgba(180,90,255,0.08);
+  
+  position: relative;
+  aspect-ratio: 16 / 9;
 }
 
 .media{
