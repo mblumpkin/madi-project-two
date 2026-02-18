@@ -465,6 +465,7 @@ main, header, section{
 }
 
 /* about cards */
+
 .about-grid{
   margin-top: 26px;
   display: grid;
@@ -485,11 +486,6 @@ main, header, section{
   background: rgba(255,255,255,0.06);
   border: 2px solid rgba(255,255,255,0.10);
   backdrop-filter: blur(10px);
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    border-color 0.18s ease,
-    background 0.18s ease;
 }
 
 .card-tag{
@@ -505,13 +501,13 @@ main, header, section{
 }
 
 .card-title{
-  margin: 0;
+  margin: 8px 0px 0px;
   font-size: 18px;
   letter-spacing: -0.2px;
 }
 
 .card-text{
-  margin: 10px 0 0;
+  margin: 10px 0px 0px;
   color: rgba(233,226,255,0.78);
   line-height: 1.7;
   font-size: 14.5px;
@@ -536,10 +532,6 @@ main, header, section{
   border: 1px solid rgba(255,255,255,0.10);
   backdrop-filter: blur(12px);
   position: relative;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
 }
 
 .dev-extra{
@@ -547,7 +539,6 @@ main, header, section{
   color: rgba(233,226,255,0.65);
   font-size: 15px;
   line-height: 1.6;
-  max-width: 60ch;
 }
 
 /* community and join section */
