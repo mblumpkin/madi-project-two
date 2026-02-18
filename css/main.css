@@ -10,6 +10,7 @@
 }
 
 /* base*/
+
 *{ box-sizing: border-box; }
 
 body{
@@ -25,14 +26,12 @@ body{
   position: fixed;
   inset: 0;
   pointer-events: none;
-
   background: radial-gradient(
     200px circle at 50% 50%,
     #ffd24d22,
     #b45aff11 40%,
     transparent 70%
   );
-
   transition: background 0.1s ease;
   z-index: 1;
 }
@@ -44,7 +43,7 @@ body{
   inset: 0;
   pointer-events: none;
   z-index: 2;
-  opacity: 0.70;
+  opacity: 0.8;
   filter: blur(0.2px);
 }
 
@@ -59,7 +58,6 @@ main, header, section{
   position: sticky;
   top: 0;
   z-index: 50;
-
   background: rgba(6, 2, 18, 0.72);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -69,7 +67,6 @@ main, header, section{
   max-width: var(--container);
   margin: 0 auto;
   padding: 18px var(--gutter);
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -80,7 +77,6 @@ main, header, section{
   display: inline-flex;
   align-items: center;
   gap: 12px;
-
   color: #ffffff;
   text-decoration: none;
   font-weight: 600;
@@ -105,16 +101,12 @@ main, header, section{
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-
   padding: 8px 14px;
   border-radius: 999px;
-
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.10);
-
   text-shadow: none;
   filter: none;
-
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease,
@@ -128,7 +120,6 @@ main, header, section{
   background: rgba(255,255,255,0.08);
   border-color: rgba(255,210,77,0.45);
   transform: translateY(-1px);
-
   box-shadow:
     0 0 0 1px rgba(255,210,77,0.18),
     0 0 18px rgba(255,210,77,0.28),
@@ -138,6 +129,77 @@ main, header, section{
 .nav-cta{
   border-color: rgba(255,210,77,0.22);
 }
+
+/* --- Mobile hamburger --- */
+
+.nav-toggle{
+  display: none;           /* hidden on desktop */
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0;
+}
+
+.nav-toggle-bar{
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 999px;
+}
+
+/* mobile layout stuff */
+
+@media (max-width: 720px){
+  .nav-toggle{
+    display: inline-flex;
+  }
+
+  .nav{
+    position: absolute;
+    top: calc(100% + 10px);
+    right: var(--gutter);
+    left: var(--gutter);
+    display: grid;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 18px;
+
+    background: rgba(6, 2, 18, 0.92);
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(14px);
+
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .site-header.nav-open .nav{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-link{
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+
+  .header-inner{
+    position: relative;
+  }
+}
+
 
 /*hero and hero buttons*/ 
 
@@ -164,21 +226,30 @@ main, header, section{
 
 .hero-visual{
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column; 
+  align-items: flex-end; 
+  gap: 8px; 
 }
 
 .hero-image{
   width: min(420px, 100%);
   height: auto;
   display: block;
-
   border-radius: 22px;
   border: 1px solid rgba(255,255,255,0.10);
   background: rgba(255,255,255,0.04);
-
   box-shadow:
     0 0 0 1px rgba(255,210,77,0.10),
     0 0 30px rgba(180,90,255,0.10);
+}
+
+.hero-image-text {
+  width: min(420px, 100%); 
+  text-align: left; 
+  margin: 12px 0 0;
+  color: rgba(233,226,255,0.70);
+  font-size: 14.5px;
+  line-height: 1.7;
 }
 
 @media (max-width: 800px){
@@ -189,6 +260,7 @@ main, header, section{
   .hero-visual{
     justify-content: flex-start;
     margin-top: 14px;
+    align-items: flex-start; 
   }
 
   .hero-image{
@@ -232,20 +304,15 @@ main, header, section{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   text-decoration: none;
   font-weight: 700;
-
   padding: 12px 16px;
   border-radius: 999px;
-
   color: #16051f;
   background: #ffd24d;
   border: 1px solid rgba(255,255,255,0.10);
-
   text-shadow: none;
   filter: none;
-
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease;
@@ -264,16 +331,12 @@ main, header, section{
   color: #cfc9ff;
   text-decoration: none;
   font-weight: 500;
-
   padding: 10px 14px;
   border-radius: 999px;
-
   border: 1px solid rgba(255,255,255,0.10);
   background: rgba(255,255,255,0.06);
-
   text-shadow: none;
   filter: none;
-
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease,
@@ -287,7 +350,6 @@ main, header, section{
   transform: translateY(-1px);
   background: rgba(255,255,255,0.08);
   border-color: rgba(255,210,77,0.40);
-
   box-shadow:
     0 0 0 1px rgba(255,210,77,0.16),
     0 0 18px rgba(255,210,77,0.22),
@@ -299,7 +361,7 @@ main, header, section{
   padding: 40px 18px;
 }
 
-/*sound toggling button and shadow bean that stands on top of it*/
+/* sound toggling button and shadow bean that stands on top of it*/
 
 .sound-wrap{
   position: fixed;
@@ -310,24 +372,18 @@ main, header, section{
 
 .sound-toggle{
   position: relative;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   padding: 10px 16px;
   border-radius: 999px;
-
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.10);
   color: #ffffff;
-
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
-
   cursor: pointer;
-
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease,
@@ -339,7 +395,6 @@ main, header, section{
   transform: translateY(-1px);
   border-color: rgba(255,210,77,0.40);
   background: rgba(255,255,255,0.08);
-
   box-shadow:
     0 0 0 1px rgba(255,210,77,0.16),
     0 0 18px rgba(255,210,77,0.22),
@@ -351,13 +406,10 @@ main, header, section{
   left: 50%;
   bottom: 100%;
   transform: translateX(-50%) translateY(6px);
-
   width: 52px;
   height: auto;
-
   pointer-events: none;
   transform-origin: bottom center;
-
   filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
 }
 
@@ -430,11 +482,9 @@ main, header, section{
   position: relative;
   padding: 18px 18px 20px;
   border-radius: 22px;
-
   background: rgba(255,255,255,0.06);
   border: 2px solid rgba(255,255,255,0.10);
   backdrop-filter: blur(10px);
-
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
@@ -447,11 +497,9 @@ main, header, section{
   display: inline-block;
   padding: 6px 10px;
   border-radius: 999px;
-
   font-size: 14px;
   letter-spacing: 2px;
   font-weight: 700;
-
   color: #16051f;
   background: rgba(255,210,77,0.92);
 }
@@ -470,6 +518,7 @@ main, header, section{
 }
 
 /*about the developer/me section*/
+
 .about-dev{
   padding: 70px 18px;
 }
@@ -483,13 +532,10 @@ main, header, section{
   margin-top: 18px;
   padding: 28px 28px 30px;
   border-radius: 26px;
-
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.10);
   backdrop-filter: blur(12px);
-
   position: relative;
-
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
@@ -504,7 +550,8 @@ main, header, section{
   max-width: 60ch;
 }
 
-/* ---------- Community Section ---------- */
+/* community and join section */
+
 .community{
   padding: 70px 18px;
 }
@@ -515,6 +562,7 @@ main, header, section{
 }
 
 /* grid = 2 cards */
+
 .community-grid{
   margin-top: 26px;
   display: grid;
@@ -531,11 +579,9 @@ main, header, section{
 .community-card{
   padding: 20px 20px 22px;
   border-radius: 22px;
-
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.10);
   backdrop-filter: blur(10px);
-
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
@@ -546,7 +592,6 @@ main, header, section{
 .perk-list{
   margin: 14px 0 0;
   padding-left: 18px;
-
   color: rgba(233,226,255,0.8);
   line-height: 1.8;
   font-size: 15px;
@@ -564,17 +609,13 @@ main, header, section{
 .community-cta{
   display: inline-block;
   margin-top: 16px;
-
   padding: 10px 14px;
   border-radius: 999px;
-
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.10);
-
   color: #cfc9ff;
   text-decoration: none;
   font-weight: 500;
-
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease,
@@ -585,17 +626,15 @@ main, header, section{
 .community-cta:hover{
   transform: translateY(-1px);
   color: #ffffff;
-
   border-color: rgba(255,210,77,0.40);
   background: rgba(255,255,255,0.08);
-
   box-shadow:
     0 0 0 1px rgba(255,210,77,0.16),
     0 0 18px rgba(255,210,77,0.22),
     0 0 28px rgba(180,90,255,0.14);
 }
 
-/*community card to join*/
+/* community card to join */
 
 .join-form{
   margin-top: 14px;
@@ -619,15 +658,12 @@ main, header, section{
   width: 100%;
   padding: 12px 14px;
   border-radius: 16px;
-
   background: rgba(0,0,0,0.20);
   border: 1px solid rgba(255,255,255,0.12);
-
   color: #ffffff;
   font-family: 'Quicksand', sans-serif;
   font-size: 15px;
   outline: none;
-
   transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease,
@@ -641,7 +677,6 @@ main, header, section{
 .field-input:focus{
   background: rgba(0,0,0,0.26);
   border-color: rgba(255,210,77,0.35);
-
   box-shadow:
     0 0 0 1px rgba(255,210,77,0.14),
     0 0 18px rgba(255,210,77,0.18),
@@ -667,15 +702,12 @@ main, header, section{
   margin-top: 6px;
   padding: 12px 16px;
   border-radius: 999px;
-
   border: 1px solid rgba(255,255,255,0.10);
   background: #ffd24d;
   color: #16051f;
-
   font-weight: 800;
   font-family: 'Quicksand', sans-serif;
   cursor: pointer;
-
   transition:
     transform 0.15s ease,
     box-shadow 0.15s ease,
@@ -705,9 +737,9 @@ main, header, section{
 }
 
 .currently-inner{
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 var(--gutter);
+  max-width: var(--container); 
+  margin: 0 auto; 
+  padding: 0 var(--gutter); 
 }
 
 .currently-grid{
@@ -717,32 +749,33 @@ main, header, section{
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 900px){
-  .currently-grid{
-    grid-template-columns: repeat(2, 1fr);
-    align-items: start;
-  }
-}
-
 .currently-card{
+  display: flex; 
+  flex-direction: column; 
+  align-items: stretch; 
   padding: 20px 20px 22px;
   border-radius: 22px;
-
+  max-width: 900px; 
+  margin: 0 auto;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.10);
   backdrop-filter: blur(10px);
-
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
-.media-frame{
+.media-frame iframe, .media-frame video{
+  position: relative;
+  max-width: 100%;
   margin-top: 14px;
+  aspect-ratio: 16 / 9;
   border-radius: 18px;
   overflow: hidden;
-
   border: 1px solid rgba(255,255,255,0.10);
   background: rgba(0,0,0,0.22);
-
   box-shadow:
     0 0 0 1px rgba(255,210,77,0.08),
     0 0 24px rgba(180,90,255,0.08);
@@ -750,7 +783,8 @@ main, header, section{
 
 .media{
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 

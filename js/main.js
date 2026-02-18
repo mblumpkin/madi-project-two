@@ -82,8 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
         w * 0.5, h * 0.35, 60,
         w * 0.5, h * 0.35, Math.max(w, h)
       );
-      fog.addColorStop(0, "rgba(180, 90, 255, 0.05)"); // #b45aff
-      fog.addColorStop(0.45, "rgba(255, 210, 77, 0.03)"); // #ffd24d
+      fog.addColorStop(0, "rgba(180, 90, 255, 0.07)");
+      fog.addColorStop(0.45, "rgba(255, 210, 77, 0.05)");
       fog.addColorStop(1, "rgba(7, 9, 24, 0)");
       ctx.fillStyle = fog;
       ctx.fillRect(0, 0, w, h);
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const tw = 0.5 + 0.5 * Math.sin(t * 0.0022 + f.phase);
-        const alpha = clamp(f.a * (0.35 + tw * 0.55), 0, 0.28);
+        const alpha = clamp(f.a * (0.45 + tw * 0.65), 0, 0.38);
 
         const rr = f.r * (0.95 + tw * 0.15);
         const hue = 46 + f.hueShift;
@@ -228,6 +228,39 @@ if (joinForm && joinBtn) {
     check();
   });
 }
+
+  const header = document.querySelector(".site-header");
+  const navToggle = document.querySelector(".nav-toggle");
+  const siteNav = document.getElementById("site-nav");
+
+  function setNavOpen(open) {
+    if (!header || !navToggle || !siteNav) return;
+
+    header.classList.toggle("nav-open", open);
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+
+  }
+
+  if (header && navToggle && siteNav) {
+    navToggle.addEventListener("click", () => {
+      const isOpen = header.classList.contains("nav-open");
+      setNavOpen(!isOpen);
+    });
+
+    siteNav.addEventListener("click", (e) => {
+      if (e.target.closest("a")) setNavOpen(false);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setNavOpen(false);
+    });
+
+    document.addEventListener("click", (e) => {
+      const clickedInsideHeader = header.contains(e.target);
+      if (!clickedInsideHeader) setNavOpen(false);
+    });
+  }
 
 
 });

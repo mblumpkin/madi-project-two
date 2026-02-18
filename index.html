@@ -48,17 +48,30 @@
       <span class="brand-text">The Light Between</span>
     </a>
 
-    <nav class="nav">
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-controls="site-nav"
+      aria-expanded="false"
+      aria-label="Open menu"
+    >
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+
+    <nav class="nav" id="site-nav">
       <a class="nav-link" href="#about">About</a>
       <a class="nav-link" href="#dev">Developer</a>
       <a class="nav-link" href="#community">Community</a>
       <a class="nav-link" href="#currently">Currently</a>
     </nav>
   </div>
-  </header>
+</header>
+
 
   <main>
-  <section class="hero" id="about">
+  <section class="hero" id="top">
   <div class="hero-inner">
 
     <div class="hero-grid">
@@ -74,13 +87,16 @@
         </p>
 
         <div class="hero-actions">
-          <a class="hero-getUpdates" href="#join">Get updates</a>
+          <a class="hero-getUpdates" href="#community">Get updates</a>
           <a class="hero-learnMore" href="#about">Learn more</a>
         </div>
       </div>
 
       <div class="hero-visual">
         <img class="hero-image" src="./img/LightBeanConceptArt.png" alt="">
+        <p class = "hero-image-text">
+          The first The Light Between concept art created by the developer, Madi Bee. 
+        </p>
       </div>
     </div>
 
@@ -92,31 +108,31 @@
     <p class="section-kicker">ABOUT THE GAME</p>
     <h2 class="section-title">A game where there's more to the world than just what you can see.</h2>
     <p class="section-sub">
-      Light Between is in development...write my three things intro
+      Light Between is currently in development, but here are three things to know...
     </p>
 
     <div class="about-grid">
       <article class="about-card">
-        <p class="card-tag">EXPLORE</p>
+        <p class="card-tag">RESTORE THE LIGHT OF THE LAND</p>
         <h3 class="card-title">Puzzle Platformer</h3>
         <p class="card-text">
-          more about the genre haha
+          Explore a mystical world guided by light and shadows through platforming, puzzles, and other obstacles. The light of the land has been lost, and it's up to you to find it.
         </p>
       </article>
 
       <article class="about-card">
         <p class="card-tag">COLLECT ABILITIES</p>
-        <h3 class="card-title">whats the guys doing</h3>
+        <h3 class="card-title">More Than Running & Jumping</h3>
         <p class="card-text">
-         yep yep more story 
+         Different areas of the land can only be reached with new abilities. Sparks of light hold new powers that will assist your journey through the lands. 
         </p>
       </article>
 
       <article class="about-card">
-        <p class="card-tag">USE YOUR SHADOW</p>
-        <h3 class="card-title">Using your shadow</h3>
+        <p class="card-tag">UNIQUE MECHANICS</p>
+        <h3 class="card-title">Using Your Shadow</h3>
         <p class="card-text">
-          About using the shadow 
+          No light is without a shadow, and in The Light Between, your shadow becomes your most important tool on your adventure. Use it to complete puzzles, reach new areas, and explore. 
         </p>
       </article>
     </div>
@@ -129,14 +145,17 @@
     <p class="section-kicker">ABOUT THE DEVELOPER</p>
 
     <div class="dev-card">
-      <h2 class="section-title">A little bit about Madi Bee...</h2>
+      <h2 class="section-title">A little bit about Madi Bee</h2>
 
       <p class="section-sub">
-       meeeeeee and why I'm making this game woohoo
+       What started as a school project...
       </p>
 
       <p class="dev-extra">
-        my inspiration eheheheheheh
+        The Light Between has become my personal passion project after creating its protoype as my final for my Intro to Unreal course at Louisiana State University. 
+        The game is a nod to my admiration for games with unique styles and mechanics such as Ori and the Will of the Wisps, Little Nightmares, and even Super Mario Bros. 
+        Not only that, but I've also had such a fasination with lighting and how it impacts a game, so I thought "why not make a game that actually uses that light for its mechanics?". 
+        I've been using this game as a way for me to learn and experiment with all that goes into game creation (coding and blueprinting, concept design, animation, modeling, level design, and so much more). 
       </p>
 
     </div>
@@ -160,10 +179,10 @@
         <h3 class="card-title">Community Perks</h3>
 
         <ul class="perk-list">
-          <li>perk one</li>
-          <li>perk two</li>
-          <li>perk three</li>
-          <li>perk four</li>
+          <li>Consistent updates on the development of the game</li>
+          <li>Access to behind-the-scenes art and design</li>
+          <li>The ability to input, give feedback, and communicate with the developer</li>
+          <li>Early access to the game's prototypes and trials</li>
         </ul>
       </article>
 
@@ -222,12 +241,12 @@
   <div class="currently-inner">
     <p class="section-kicker">CURRENTLY</p>
     <h2 class="section-title">What I’m working on right now</h2>
-    <p class="section-sub">Quick peeks + dev notes as the game evolves.</p>
+    <p class="section-sub">Quick peeks & dev notes as the game evolves.</p>
 
     <div class="currently-grid">
       <article class="currently-card">
         <p class="card-tag">PROTOTYPE</p>
-        <h3 class="card-title">Playtest clip (prototype run)</h3>
+        <h3 class="card-title">Playtest clip of the prototype</h3>
 
        <div class="media-frame">
       <iframe
@@ -241,7 +260,9 @@
     </div>
 
         <p class="dev-notes">
-          Dev notes: these are my notes enfaerjfheuasir fher
+          Behind every game that looks great is the process of creating logic that gets the game actually functioning. 
+          That was the first challenge I tackled in Unreal 5.6 with blueprinting and coding everything from the movement to gaining new abilities to being able to switch into your shadow form.
+          Above is the prototype testing all of that logic in a very blocky version of the level design.
         </p>
       </article>
 
@@ -256,14 +277,14 @@
         </div>
 
         <p class="dev-notes">
-          Dev notes: modelllijnnnngnngjndsjhgabsedg
+          Now with the level design finishing up, I'm working on modeling my own assets for the game.
+          Above is the most recent of those models (a hollow log that the player will be able to walk through when in their shadow form). 
+          All base modeling has been done in Autodesk Maya. 
         </p>
       </article>
     </div>
   </div>
 </section>
-
-
   </main>
   
   <script src="js/main.js"></script>
