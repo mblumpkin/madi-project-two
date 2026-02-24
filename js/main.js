@@ -82,9 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
         w * 0.5, h * 0.35, 60,
         w * 0.5, h * 0.35, Math.max(w, h)
       );
-      fog.addColorStop(0, "rgba(180, 90, 255, 0.07)");
-      fog.addColorStop(0.45, "rgba(255, 210, 77, 0.05)");
-      fog.addColorStop(1, "rgba(7, 9, 24, 0)");
+      fog.addColorStop(0, "#b45aff12");
+      fog.addColorStop(0.45, "#ffd24d0d");
+      fog.addColorStop(1, "#07091800");
       ctx.fillStyle = fog;
       ctx.fillRect(0, 0, w, h);
 
