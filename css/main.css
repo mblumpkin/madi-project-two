@@ -762,6 +762,7 @@ main, header, section{
   position: relative;
   max-width: 100%;
   margin-top: 14px;
+  margin-bottom: 18px;
   aspect-ratio: 16 / 9;
   border-radius: 18px;
   overflow: hidden;
@@ -782,6 +783,6 @@ main, header, section{
 .dev-notes{
   margin: 12px 0 0;
   color: rgba(233,226,255,0.70);
-  font-size: 14.5px;
+  font-size: 14px;
   line-height: 1.7;
 }
