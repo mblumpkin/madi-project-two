@@ -790,3 +790,57 @@ main, header, section{
   font-size: 14px;
   line-height: 1.75;
 }
+
+/* pop up for when the user submits to join the community */
+.modal{
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #00000080; /* translucent overlay */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  z-index: 999;
+}
+
+.modal.is-open{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card{
+  width: min(520px, 100%);
+  border-radius: 22px;
+  padding: 20px 20px 18px;
+  background: #060212f2;
+  border: 1px solid #ffffff1a;
+  box-shadow:
+    0 0 0 1px #ffd24d24,
+    0 0 30px #b45aff1a,
+    0 18px 70px #00000080;
+}
+
+.modal-title{
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.modal-text{
+  margin: 0 0 14px;
+  color: #e9e2ffcc;
+  line-height: 1.6;
+}
+
+.modal-close{
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid #ffffff1a;
+  background: #ffd24d;
+  color: #16051f;
+  font-weight: 800;
+  font-family: 'Quicksand', sans-serif;
+  cursor: pointer;
+}

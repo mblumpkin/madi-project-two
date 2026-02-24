@@ -262,5 +262,31 @@ if (joinForm && joinBtn) {
     });
   }
 
+  const form = document.getElementById("join-form");
+const modal = document.getElementById("join-modal");
+const closeBtn = document.getElementById("join-modal-close");
+
+function openModal() {
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  closeBtn.focus();
+}
+
+function closeModal() {
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+}
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); 
+  openModal();
+  form.reset();
+});
+
+closeBtn.addEventListener("click", closeModal);
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) closeModal();
+});
 
 });
