@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-/**mouse glow effect */
-
+  /** mouse glow effect */
   const glow = document.getElementById("mouse-glow");
   if (glow) {
     document.addEventListener("mousemove", (e) => {
@@ -17,20 +15,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /**the fireflies that made me rip my hair out*/
-
+  /** the fireflies that made me rip my hair out */
   const canvas = document.getElementById("fireflies");
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
   if (canvas && !prefersReducedMotion) {
     const ctx = canvas.getContext("2d");
 
-    let w = 0, h = 0, dpr = 1;
+    let w = 0,
+      h = 0,
+      dpr = 1;
     const pointer = { x: 0.5, y: 0.4, active: false };
     const flies = [];
 
-    function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }
-    function rand(min, max) { return Math.random() * (max - min) + min; }
+    function clamp(n, a, b) {
+      return Math.max(a, Math.min(b, n));
+    }
+    function rand(min, max) {
+      return Math.random() * (max - min) + min;
+    }
 
     function resize() {
       dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
@@ -43,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       canvas.style.height = h + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const target = Math.floor(28 * (w * h) / (1100 * 700));
+      const target = Math.floor((28 * (w * h)) / (1100 * 700));
 
       while (flies.length < target) {
         flies.push({
@@ -79,8 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       ctx.globalCompositeOperation = "source-over";
       const fog = ctx.createRadialGradient(
-        w * 0.5, h * 0.35, 60,
-        w * 0.5, h * 0.35, Math.max(w, h)
+        w * 0.5,
+        h * 0.35,
+        60,
+        w * 0.5,
+        h * 0.35,
+        Math.max(w, h)
       );
       fog.addColorStop(0, "#b45aff12");
       fog.addColorStop(0.45, "#ffd24d0d");
@@ -150,7 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (audio && btn && label) {
     btn.addEventListener("click", async () => {
-   
       btn.classList.remove("bounce");
       void btn.offsetWidth;
       btn.classList.add("bounce");
@@ -177,69 +185,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-const joinForm = document.getElementById("join-form");
-const joinHint = document.getElementById("join-hint");
-const joinBtn = joinForm?.querySelector(".join-submit");
-
-if (joinForm && joinBtn) {
-  const nameInput = joinForm.elements["name"];
-  const emailInput = joinForm.elements["email"];
-  const excitedInput = joinForm.elements["excited"];
-
-  const validEmail = (value) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
-  };
-
-  const check = () => {
-    const nameOk = nameInput.value.trim().length > 0;
-    const emailOk = validEmail(emailInput.value);
-    const excitedOk = excitedInput.value.trim().length > 0;
-
-    const allOk = nameOk && emailOk && excitedOk;
-    joinBtn.disabled = !allOk;
-
-    if (!emailOk && emailInput.value.trim().length > 0) {
-      joinHint.textContent = "Please enter a valid email address.";
-      joinHint.classList.add("error");
-    } else {
-      joinHint.textContent = "All fields are required.";
-      joinHint.classList.remove("error");
-    }
-  };
-
-  ["input", "blur"].forEach((evt) => {
-    nameInput.addEventListener(evt, check);
-    emailInput.addEventListener(evt, check);
-    excitedInput.addEventListener(evt, check);
-  });
-
-  check();
-
-  joinForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    check();
-    if (joinBtn.disabled) return;
-
-    joinHint.textContent = "You’re in! Welcome to the community ✨";
-    joinHint.classList.remove("error");
-
-    joinForm.reset();
-    check();
-  });
-}
-
   const header = document.querySelector(".site-header");
   const navToggle = document.querySelector(".nav-toggle");
   const siteNav = document.getElementById("site-nav");
 
   function setNavOpen(open) {
     if (!header || !navToggle || !siteNav) return;
-
     header.classList.toggle("nav-open", open);
     navToggle.setAttribute("aria-expanded", open ? "true" : "false");
     navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-
   }
 
   if (header && navToggle && siteNav) {
@@ -263,30 +217,83 @@ if (joinForm && joinBtn) {
   }
 
   const form = document.getElementById("join-form");
-const modal = document.getElementById("join-modal");
-const closeBtn = document.getElementById("join-modal-close");
+  const joinHint = document.getElementById("join-hint");
+  const joinBtn = form ? form.querySelector(".join-submit") : null;
 
-function openModal() {
-  modal.classList.add("is-open");
-  modal.setAttribute("aria-hidden", "false");
-  closeBtn.focus();
-}
+  const modal = document.getElementById("join-modal");
+  const closeBtn = document.getElementById("join-modal-close");
 
-function closeModal() {
-  modal.classList.remove("is-open");
-  modal.setAttribute("aria-hidden", "true");
-}
+  const validEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault(); 
-  openModal();
-  form.reset();
-});
+  function openModal() {
+    if (!modal || !closeBtn) return;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    closeBtn.focus();
+  }
 
-closeBtn.addEventListener("click", closeModal);
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+  }
 
-modal.addEventListener("click", (e) => {
-  if (e.target === modal) closeModal();
-});
+  function check() {
+    if (!form || !joinBtn || !joinHint) return false;
 
+    const nameInput = form.elements["name"];
+    const emailInput = form.elements["email"];
+    const excitedInput = form.elements["excited"];
+
+    const nameOk = nameInput.value.trim().length > 0;
+    const emailOk = validEmail(emailInput.value);
+    const excitedOk = excitedInput.value.trim().length > 0;
+
+    const allOk = nameOk && emailOk && excitedOk;
+    joinBtn.disabled = !allOk;
+
+    if (!emailOk && emailInput.value.trim().length > 0) {
+      joinHint.textContent = "Please enter a valid email address.";
+      joinHint.classList.add("error");
+    } else {
+      joinHint.textContent = "All fields are required.";
+      joinHint.classList.remove("error");
+    }
+
+    return allOk;
+  }
+
+  if (form && joinBtn && joinHint) {
+    ["input", "blur"].forEach((evt) => {
+      form.addEventListener(evt, (e) => {
+        if (e.target && (e.target.matches("input") || e.target.matches("textarea"))) {
+          check();
+        }
+      });
+    });
+
+    check();
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const ok = check();
+      if (!ok) return;
+
+      openModal();
+      form.reset();
+      check();
+    });
+  }
+
+  closeBtn?.addEventListener("click", closeModal);
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
 });
