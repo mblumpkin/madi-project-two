@@ -863,3 +863,23 @@ section {
   font-family: "Quicksand", sans-serif;
   cursor: pointer;
 }
+
+/* footer */
+
+.site-footer {
+  position: relative;
+  z-index: 3;
+  padding: 28px 18px;
+  border-top: 1px solid #ffffff14;
+  background: #060212b8;
+  backdrop-filter: blur(14px);
+}
+
+.footer-meta {
+  margin: 0;
+  text-align: center;
+  color: #e9e2ff8c;
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+}
